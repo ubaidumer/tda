@@ -1,0 +1,20 @@
+import { BicycleAttributeDetail } from 'src/api/bicycle-attribute-detail/bicycle-attribute-detail.entity';
+import { BicycleAttribute } from 'src/api/bicycle-attribute/bicycle-attribute.entity';
+import { BicycleType } from 'src/api/bicycle-type/bicycle-type.entity';
+declare const CONFIG: {
+    DATABASE_TYPE: string;
+    DATABASE_HOST: string;
+    DATABASE_PORT: string;
+    DATABASE_USERNAME: string;
+    DATABASE_PASSWORD: string;
+    DATABASE_NAME: string;
+    DATABASE_ENTITIES: (typeof BicycleType | typeof BicycleAttributeDetail | typeof BicycleAttribute)[];
+    DATABASE_SYNCHRONIZE: boolean;
+    DATABASE_MULTI_STATEMENT: boolean;
+    NEST_APP_PORT: string;
+    KEYCLOAK_URL: string;
+    KEYCLOAK_REALM: string;
+    KEYCLOAK_CLIENT: string;
+    KEYCLOAK_CLIENT_SECRET: string;
+};
+export default CONFIG;

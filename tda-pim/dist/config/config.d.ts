@@ -1,0 +1,25 @@
+import { Category } from 'src/api/category/category.entity';
+import { Location } from 'src/api/location/location.entity';
+import { Tax } from 'src/api/tax/tax.entity';
+import { Measurement } from 'src/api/measurement/measurement.entity';
+import { Supplier } from 'src/api/supplier/supplier.entity';
+import { Stock } from 'src/api/stock/stock.entity';
+import { Product } from 'src/api/product/product.entity';
+import { Product_Attributes } from 'src/api/product-attributes/product-attributes.entity';
+declare const CONFIG: {
+    DATABASE_TYPE: string;
+    DATABASE_HOST: string;
+    DATABASE_PORT: string;
+    DATABASE_USERNAME: string;
+    DATABASE_PASSWORD: string;
+    DATABASE_NAME: string;
+    DATABASE_ENTITIES: (typeof Product | typeof Supplier | typeof Category | typeof Tax | typeof Stock | typeof Product_Attributes | typeof Location | typeof Measurement)[];
+    DATABASE_SYNCHRONIZE: boolean;
+    DATABASE_MULTI_STATEMENT: boolean;
+    NEST_APP_PORT: string;
+    KEYCLOAK_URL: string;
+    KEYCLOAK_REALM: string;
+    KEYCLOAK_CLIENT: string;
+    KEYCLOAK_CLIENT_SECRET: string;
+};
+export default CONFIG;

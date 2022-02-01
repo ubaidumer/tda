@@ -1,0 +1,20 @@
+import { Booking } from 'src/api/booking/booking.entity';
+import { User } from 'src/api/booking/user.entity';
+import { Services } from 'src/api/services/services.entity';
+declare const CONFIG: {
+    DATABASE_TYPE: string;
+    DATABASE_HOST: string;
+    DATABASE_PORT: string;
+    DATABASE_USERNAME: string;
+    DATABASE_PASSWORD: string;
+    DATABASE_NAME: string;
+    DATABASE_ENTITIES: (typeof User | typeof Booking | typeof Services)[];
+    DATABASE_SYNCHRONIZE: boolean;
+    DATABASE_MULTI_STATEMENT: boolean;
+    NEST_APP_PORT: string;
+    KEYCLOAK_URL: string;
+    KEYCLOAK_REALM: string;
+    KEYCLOAK_CLIENT: string;
+    KEYCLOAK_CLIENT_SECRET: string;
+};
+export default CONFIG;

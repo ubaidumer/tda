@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    container_name: mysql-power-search
+    volumes:
+      - mysql-power-search-db:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_DATABASE: tda
+      MYSQL_USER: tdamaster
+      MYSQL_PASSWORD: cyXqkRmN8h4YHtG5
+      MYSQL_ROOT_PASSWORD: admin
+    ports:
+      - '3306:3306'
+
+
+  nest:
+    image: tda-be-crm
+    environment:
+      - MYSQL_DATABASE_TYPE=mysql
+      - MYSQL_DATABASE_HOST=localhost
+      - MYSQL_DATABASE_PORT=3306
+      - MYSQL_DATABASE_USERNAME=tdamaster
+      - MYSQL_DATABASE_PASSWORD=cyXqkRmN8h4YHtG5
+      - MYSQL_DATABASE_NAME=tda
+      - SERVER_PORT=2000
+    depends_on:
+      - db
+    ports:
+      - 2000:2000
+
+volumes:
+  mysql-power-search-db:

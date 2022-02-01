@@ -1,0 +1,27 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CreateBookingValidationDecorator = void 0;
+const common_1 = require("@nestjs/common");
+const Validator = require("validatorjs");
+exports.CreateBookingValidationDecorator = (0, common_1.createParamDecorator)(async (data, ctx) => {
+    const request = ctx.switchToHttp().getRequest();
+    const body = request.body;
+    const rules = {
+        start_time: ['required', 'string'],
+        end_time: ['required', 'string'],
+        booking_date: ['required', 'date'],
+        status: ['in:Pending,In_Progress,Cancelled,Completed'],
+    };
+    const messages = {
+        "required": ":attribute is required!",
+        "string": ":attribute must be string!",
+        "date": ":attribute must be date!"
+    };
+    let validate = await new Validator(body, rules, messages);
+    const result = validate.passes();
+    if (result == false) {
+        throw new common_1.HttpException(validate.errors, common_1.HttpStatus.NOT_ACCEPTABLE);
+    }
+    return body;
+});
+//# sourceMappingURL=createBookingValidation.decorator.js.map
